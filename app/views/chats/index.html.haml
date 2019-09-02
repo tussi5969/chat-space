@@ -1,0 +1,35 @@
+.user
+  .user__name
+    test-app
+    = fa_icon 'edit', class: "user__name--icon"
+    = fa_icon 'cog', class: "user__name--icon"
+  .user__groups
+    = render partial: "user", locals: {name: "test-sample", chat: "さようなら"}
+    = render partial: "user", locals: {name: "example", chat: "まだメッセージがありません"}
+
+.chat
+  .chat__group
+    .chat__group__btn
+      Edit
+    .chat__group__info
+      .chat__group__info__name
+        test-sample
+      .chat__group__info__member
+        Members: test-app
+
+  .chat__main
+    = render partial: "chat", locals: {name: "test-user", time:"2019/08/28(Wed) 16:54:28 UTC", text: "こんにちは"}
+    = render partial: "chat", locals: {name: "test-user", time:"2019/08/28(Wed) 16:56:58 UTC", text: "さようなら"}
+
+  .chat__message
+    .chat__message__btn
+      Send
+    .chat__message__form
+      %input{placeholder: "type a message", type: "text", class:"chat__message__form__text"}
+        .chat__message__send__form__text--img
+          %label.upload-label{for: "upload-icon", class: "chat__message__form__text--img__label"}
+            %i.fa.fa-picture-o{class: "chat__message__form__text--img__label__icon"}
+            %input{name: "image", type:"file", id: "upload-icon"}
+
+
+
