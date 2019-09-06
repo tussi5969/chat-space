@@ -11,18 +11,19 @@
         Members: test-app
 
   .chat__main
-    = render partial: "chat", locals: {name: "test-user", time:"2019/08/28(Wed) 16:54:28 UTC", text: "こんにちは"}
-    = render partial: "chat", locals: {name: "test-user", time:"2019/08/28(Wed) 16:56:58 UTC", text: "さようなら"}
+    = render @chats
 
   .chat__message
-    .chat__message__btn
-      Send
-    .chat__message__form
-      %input{placeholder: "type a message", type: "text", class:"chat__message__form__text"}
+    = form_for [@group, @chat] do |f|
+      = f.submit 'Send', class: 'chat__message__btn'
+      -# Send
+      .chat__message__form
+        = f.text_field :content, class: 'chat__message__form__text', placeholder: 'type a message'
         .chat__message__send__form__text--img
-          %label.upload-label{for: "upload-icon", class: "chat__message__form__text--img__label"}
-            %i.fa.fa-picture-o{class: "chat__message__form__text--img__label__icon"}
-            %input{name: "image", type:"file", id: "upload-icon"}
+          = f.label :image, class: 'chat__message__form__text--img__label' do
+            = fa_icon 'picture-o', class: 'chat__message__form__text--img__label__icon'
+            = f.file_field :image, class: 'chat__message__form__text--img__label__upload'
+            -# %input{name: "image", type:"file", id: "upload-icon"}
 
 
 

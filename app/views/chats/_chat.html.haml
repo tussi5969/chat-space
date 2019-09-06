@@ -1,8 +1,10 @@
 .chat__main__content
   .chat__main__content__info
     %span.chat__main__content__info__username
-      #{name}
+      = chat.user.name
     %span.chat__main__content__info__date
-      #{time}
+      = chat.created_at.strftime("%Y/%m/%d %H:%M")
   .chat__main__content__text
-    #{text}
+    - if chat.content.present?
+      = chat.content
+    = image_tag chat.image.url, class: 'chat__main__content__text__image' if chat.image.present?

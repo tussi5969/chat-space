@@ -12,5 +12,5 @@
           .user__groups__group__name
             = group.name
           .user__groups__group__chat
-            メッセージはまだありません。
+            = group.show_last_message
     -# = render partial: "user", locals: {name: "example", chat: "まだメッセージがありません"}
