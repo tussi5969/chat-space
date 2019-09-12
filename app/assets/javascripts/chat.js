@@ -1,39 +1,22 @@
 $(function () {
   function buildHTML(chat) {
-    if (chat.image) {
-      var html =
-        `<div class="chat__main__content" data-chat-id=${chat.id}>
-          <div class="chat__main__content__info">
-            <span class="chat__main__content__info__username">
-              ${chat.user_name}
-            </span>
-            <span class="chat__main__content__info__date">
-              ${chat.date}
-            </span>
-          </div>
-          <div class="chat__main__content__text">
-            ${chat.content}
-          </div>
-          <img src=${chat.image} class="chat__main__content__text__image">
-        </div>`
-      return html;
-    } else {
-      var html =
-        `<div class="chat__main__content" data-chat-id=${chat.id}>
-          <div class="chat__main__content__info">
-            <span class="chat__main__content__info__username">
-              ${chat.user_name}
-            </span>
-            <span class="chat__main__content__info__date">
-              ${chat.date}
-            </span>
-          </div>
-          <div class="chat__main__content__text">
-              ${chat.content}
-          </div>
-        </div>`
-      return html;
-    };
+    var img_display = chat.image ? `<img src=${chat.image} class="chat__main__content__text__image">` : ``;
+    var html =
+      `<div class="chat__main__content" data-chat-id=${chat.id}>
+        <div class="chat__main__content__info">
+          <span class="chat__main__content__info__username">
+            ${chat.user_name}
+          </span>
+          <span class="chat__main__content__info__date">
+            ${chat.date}
+          </span>
+        </div>
+        <div class="chat__main__content__text">
+          ${chat.content}
+        </div>
+        ${img_display}
+      </div>`
+    return html;
   }
 
 
