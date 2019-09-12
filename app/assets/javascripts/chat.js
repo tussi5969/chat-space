@@ -37,11 +37,11 @@ $(function () {
         var html = buildHTML(data);
         $('.chat__main').append(html);
         $('.chat__main').animate({scrollTop: $('.chat__main')[0].scrollHeight}, 'fast');
-        $('form')[0].reset();
+        $('#message_form')[0].reset();
+        $('.chat__message__btn').prop('disabled', false);
       })
       .fail(function () {
         alert('error');
       });
-      return false;
   });
 });
