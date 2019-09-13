@@ -3,7 +3,7 @@
     %span.chat__main__content__info__username
       = chat.user.name
     %span.chat__main__content__info__date
-      = chat.created_at.strftime("%Y/%m/%d %H:%M")
+      = chat.created_at.strftime("%Y年%m月%d日 %H時%M分")
   .chat__main__content__text
     - if chat.content.present?
       = chat.content

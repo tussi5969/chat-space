@@ -18,7 +18,7 @@
       = f.submit 'Send', class: 'chat__message__btn'
       -# Send
       .chat__message__form
-        = f.text_field :content, class: 'chat__message__form__text', placeholder: 'type a message'
+        = f.text_field :content, class: 'chat__message__form__text', id: 'message_form', placeholder: 'type a message'
         .chat__message__send__form__text--img
           = f.label :image, class: 'chat__message__form__text--img__label' do
             = fa_icon 'picture-o', class: 'chat__message__form__text--img__label__icon'
