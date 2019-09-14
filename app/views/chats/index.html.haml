@@ -3,12 +3,15 @@
 .chat
   .chat__group
     .chat__group__btn
-      Edit
+      = link_to "Edit", edit_group_path(params[:group_id]), method: :get, class: "edit_link"
     .chat__group__info
       .chat__group__info__name
-        test-sample
+        = @group.name
       .chat__group__info__member
-        Members: test-app
+        Members:
+        - @members.each do |member|
+          = member.name
+
 
   .chat__main
     = render @chats
