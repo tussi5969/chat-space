@@ -5,7 +5,6 @@ class ChatsController < ApplicationController
     @chat = Chat.new
     @chats = @group.chats.includes(:user)
     @members = @group.users
-    # binding.pry
   end
 
   def create
