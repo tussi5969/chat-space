@@ -68,6 +68,6 @@ $(function () {
     }
   };
 
-  // setInterval(reloadChats, 5000);
+  setInterval(reloadChats, 5000);
 
 });
