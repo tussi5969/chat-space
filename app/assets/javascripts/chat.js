@@ -1,24 +1,23 @@
 $(function () {
-  function buildHTML(chat) {
-    var img_display = chat.image ? `<img src=${chat.image} class="chat__main__content__text__image">` : ``;
+  var buildHTML = function (chat) {
+    var img_display = (chat.image) ? `<img src=${chat.image} class="chat__main__content__text__image">` : ``;
+    var content = chat.content ? `<div class="chat__main__content__text"> ${chat.content} </div>` : ``;
+
     var html =
-      `<div class="chat__main__content" data-chat-id=${chat.id}>
+      `<div class="chat__main__content" data-chat-id= ${chat.id}>
         <div class="chat__main__content__info">
           <span class="chat__main__content__info__username">
             ${chat.user_name}
           </span>
           <span class="chat__main__content__info__date">
-            ${chat.date}
+            ${chat.created_at}
           </span>
         </div>
-        <div class="chat__main__content__text">
-          ${chat.content}
-        </div>
+        ${content}
         ${img_display}
       </div>`
     return html;
-  }
-
+  };
 
   $('#new_chat').on('submit', function (e) {
     e.preventDefault();
@@ -33,6 +32,7 @@ $(function () {
       processData: false,
       contentType: false
     })
+
       .done(function (data) {
         var html = buildHTML(data);
         $('.chat__main').append(html);
@@ -44,4 +44,30 @@ $(function () {
         alert('error');
       });
   });
+
+  var reloadChats = function () {
+    if (window.location.href.match(/\/groups\/\d+\/chats/)) {
+      var last_chat_id = $('.chat__main__content:last').data("chat-id");
+      $.ajax({
+        url: 'api/chats',
+        type: 'GET',
+        dataType: 'json',
+        data: {id: last_chat_id}
+      })
+      .done(function (chats) {
+        var insertHTML = '';
+        chats.forEach(function (chat) {
+          insertHTML = buildHTML(chat)
+          $('.chat__main').append(insertHTML)
+          $('.chat__main').animate({scrollTop: $('.chat__main')[0].scrollHeight}, 'fast');
+        });
+      })
+      .fail(function() {
+        alert('error');
+      });
+    }
+  };
+
+  setInterval(reloadChats, 5000);
+
 });
