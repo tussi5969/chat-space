@@ -1,7 +1,7 @@
 $(function () {
   var buildHTML = function (chat) {
     var img_display = (chat.image) ? `<img src=${chat.image} class="chat__main__content__text__image">` : ``;
-    var content = chat.content ? `<div class="chat__main__content__text"> ${chat.content} </div>` : ``;
+    var content = chat.content ? `<p class="chat__main__content__text"> ${chat.content} </p>` : ``;
 
     var html =
       `<div class="chat__main__content" data-chat-id= ${chat.id}>
