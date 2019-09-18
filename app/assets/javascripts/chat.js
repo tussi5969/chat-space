@@ -1,6 +1,6 @@
 $(function () {
   var buildHTML = function (chat) {
-    var img_display = (chat.image) ? `<img src=${chat.image} class="chat__main__content__text__image">` : ``;
+    var img_display = chat.image ? `<img src=${chat.image} class="chat__main__content__text__image">` : ``;
     var content = chat.content ? `<p class="chat__main__content__text"> ${chat.content} </p>` : ``;
 
     var html =
