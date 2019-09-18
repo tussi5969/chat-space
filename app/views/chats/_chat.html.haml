@@ -4,7 +4,7 @@
       = chat.user.name
     %span.chat__main__content__info__date
       = chat.created_at.strftime("%Y年%m月%d日 %H時%M分")
-  .chat__main__content__text
+  %p.chat__main__content__text
     - if chat.content.present?
       = chat.content
     = image_tag chat.image.url, class: 'chat__main__content__text__image' if chat.image.present?
